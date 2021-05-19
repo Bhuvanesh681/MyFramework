@@ -1,0 +1,11 @@
+package com.Framwork.enums;
+
+public enum ConfigProperties {
+	URL,
+	OVERRIDEREPORTS,
+	PASSEDSTEPSSCREENSHOTS,
+	FAILEDSTEPSSCREENSHOTS,
+	SKIPPEDSTEPSSCREENSHOTS,
+	BROWSER,
+
+}
