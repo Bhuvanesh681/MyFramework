@@ -9,7 +9,8 @@ import com.Framwork.enums.WaitStrategy;
 import com.framework.constants.FrameworkConstants;
 import com.framework.driver.DriverManager;
 
-public class ExplicitWaitFactory {
+public final class ExplicitWaitFactory {
+	private ExplicitWaitFactory() {}
 	
 	public static WebElement performExplicitWait(WaitStrategy waitstrategy, By by) {
 		WebElement element= null;
@@ -29,5 +30,7 @@ public class ExplicitWaitFactory {
 		}
 		return element;
 	}
+	
+	
 
 }

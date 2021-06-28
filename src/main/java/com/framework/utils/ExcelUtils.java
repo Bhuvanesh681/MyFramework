@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.framework.constants.FrameworkConstants;
+import com.framework.exception.InvalidPathForException;
 
 public final class ExcelUtils {
 
@@ -20,21 +20,20 @@ public final class ExcelUtils {
 
 	}
 
-	public static List<Map<String,String>> getTestDetails(){
+	@SuppressWarnings("resource")
+	public static List<Map<String,String>> getTestDetails(String sheetname){
 		List<Map<String,String>> list=null;
-		FileInputStream fs = null;
+
 		XSSFWorkbook workbook;
-		try {
-			fs=new FileInputStream(FrameworkConstants.getExcelPath());
+
+		try(FileInputStream fs=new FileInputStream(FrameworkConstants.getExcelPath())) {
+
 			workbook = new XSSFWorkbook(fs);
-			String sheetname="RUNMANAGER";
 			XSSFSheet sheet=workbook.getSheet(sheetname);
-			
-			Map<String,String> map=null;
 			list=new ArrayList<Map<String,String>>();
 			int lastrownum=sheet.getLastRowNum();
 			int lastcolnum=sheet.getRow(0).getLastCellNum();
-
+			Map<String,String> map=null;
 			for(int i =1;i<=lastrownum;i++) {
 				map=new HashMap<String,String>();
 				for(int j=0;j<lastcolnum;j++) {
@@ -45,23 +44,14 @@ public final class ExcelUtils {
 				list.add(map);
 			}
 
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}catch(IOException e) {
-			e.printStackTrace();
+
+		} catch (FileNotFoundException e) {
+			throw new InvalidPathForException("Excel file you are trying to read is not found");
+		} catch (IOException e) {
+			throw new InvalidPathForException("some IO exception happened while trying to read excel file");
 		}
-		finally {
-			try {
-				if(Objects.nonNull(fs)) {
-				fs.close();
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
+
+
 		return list;
 
 	}

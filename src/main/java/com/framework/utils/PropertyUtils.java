@@ -1,17 +1,16 @@
 package com.framework.utils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Properties;
 
 import com.Framwork.enums.ConfigProperties;
 import com.framework.constants.FrameworkConstants;
-
-import java.util.Objects;
-import java.util.Properties;
+import com.framework.exception.PropertyFileUsageException;
 
 public class PropertyUtils {
 
@@ -23,25 +22,21 @@ public class PropertyUtils {
 	private static final Map<String,String> CONFIGMAP=new HashMap<String, String>(); 
 
 	static {
-		try {
-			FileInputStream file= new FileInputStream(FrameworkConstants.getConfigFilePath());
+		try(FileInputStream file= new FileInputStream(FrameworkConstants.getConfigFilePath())) {
 			property.load(file);
-			
-			
 			for(Entry<Object, Object> entry : property.entrySet()) {
 				CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim());
 			}
-		}catch(FileNotFoundException e) {
+		}catch(IOException e) {
 			e.printStackTrace();
+			System.exit(0);
 		}
-		catch(IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 	
-	public static String get(ConfigProperties key) throws Exception {
+	public static String get(ConfigProperties key)  {
 		if(Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))) {
-			throw new Exception("Property name "+ key + "is not found. Please check config.properties");
+			throw new PropertyFileUsageException("Property name "+ key + "is not found. Please check config.properties");
 		}
 		return CONFIGMAP.get(key.name().toLowerCase());
 	}

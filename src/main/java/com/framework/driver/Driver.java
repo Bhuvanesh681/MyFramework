@@ -1,21 +1,31 @@
 package com.framework.driver;
 
+import java.net.MalformedURLException;
 import java.util.Objects;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import com.Framwork.enums.ConfigProperties;
-import com.framework.constants.FrameworkConstants;
+import com.framework.exception.BrowserInvocationFailedException;
+import com.framework.factories.DriverFactory;
 import com.framework.utils.PropertyUtils;
 
+
+/**
+ * 
+ * @author BSikarwar
+ *
+ */
 
 public class Driver {
 
 
-	public static void initDriver() throws Exception {
+	public static void initDriver(String browser)  {
 		if(Objects.isNull(DriverManager.getDriver())) {
-			System.setProperty("webdriver.chrome.driver", FrameworkConstants.getChromeDriverPath());
-			DriverManager.setDriver(new ChromeDriver());
+			try {
+				DriverManager.setDriver(DriverFactory.getDriver(browser));
+			} catch (MalformedURLException e) {
+				throw new BrowserInvocationFailedException("Browser Invocation failed. Please check the capabilities");
+			}
+			DriverManager.getDriver().manage().window().maximize();
 			DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
 		}
 

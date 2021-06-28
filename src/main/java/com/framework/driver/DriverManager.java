@@ -10,6 +10,7 @@ public class DriverManager {
 	}
 	public static void setDriver(WebDriver driverref) {
 		dr.set(driverref);
+		
 	}
 	
 	public static void unload() {

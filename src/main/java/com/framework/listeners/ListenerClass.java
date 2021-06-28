@@ -1,13 +1,13 @@
 package com.framework.listeners;
 
-import java.io.IOException;
+import java.util.Arrays;
 
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
+import com.framework.annotations.FrameworkAnnotation;
 import com.framework.reports.ExtentLogger;
 import com.framework.reports.ExtentReport;
 
@@ -15,30 +15,24 @@ import com.framework.reports.ExtentReport;
 public class ListenerClass implements ITestListener,ISuiteListener{
 
 	public void onStart(ISuite suite) {
-		try {
+		
 			ExtentReport.iniReports();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 	}
 
 	public void onFinish(ISuite suite) {
-		try {
+		
 			ExtentReport.flushReports();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 	}
 
 	public void onTestStart(ITestResult result) {
 		ExtentReport.createTest(result.getMethod().getDescription());
+		ExtentReport.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class)
+		.author());
+		ExtentReport.addCategories(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class)
+		.category());
 		
 	}
 
@@ -48,13 +42,11 @@ public class ListenerClass implements ITestListener,ISuiteListener{
 	}
 
 	public void onTestFailure(ITestResult result) {
-		try {
+		
 			ExtentLogger.fail(result.getMethod().getMethodName()+" is Failed",true);
 			ExtentLogger.fail(result.getThrowable().toString());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			ExtentLogger.fail(Arrays.toString(result.getThrowable().getStackTrace()));
+		
 		
 	}
 
