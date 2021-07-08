@@ -9,14 +9,14 @@ public class FrameworkConstants {
 
 	}
 	private static final String RESOURCEPATH=System.getProperty("user.dir")+"/src/test/resources";
-	private static final String CHROMEDRIVERPATH=RESOURCEPATH+"/executables/chromedriver.exe";
-	private static final String GECKODRIVERPATH=RESOURCEPATH+"/executables/geckodriver.exe";
 	private static final String CONFIGFILEPATH=RESOURCEPATH+"/config/config.properties";
 	private static final String EXCELPATH=RESOURCEPATH+"/excel/testdata.xlsx";
 	private static final String RUNMANAGERSHEET="RUNMANAGER";
 	private static final String ITERATIONDATASHEET="DATA";
-	
-	
+	private static final String EXTENTREPORTPATH=System.getProperty("user.dir")+"/extent-test-output";
+	private static String extentReportFilePath="";
+
+
 	public static String getRunManagerSheet() {
 		return RUNMANAGERSHEET;
 	}
@@ -24,9 +24,8 @@ public class FrameworkConstants {
 	public static String getIterationDataSheet() {
 		return ITERATIONDATASHEET;
 	}
-	private static final String EXTENTREPORTPATH=System.getProperty("user.dir")+"/extent-test-output";
-	private static String extentReportFilePath="";
 	
+
 	public static String getExcelPath() {
 		return EXCELPATH;
 	}
@@ -37,11 +36,9 @@ public class FrameworkConstants {
 		}
 		return extentReportFilePath;
 	}
-	
-	public static String getGeckoDriverPath() {
-		return GECKODRIVERPATH;
-	}
-	
+
+
+
 	private static String createReportPath() {
 		if(PropertyUtils.get(ConfigProperties.OVERRIDEREPORTS).equalsIgnoreCase("no")) {
 			return EXTENTREPORTPATH +"/"+System.currentTimeMillis()+"/index.html"; 
@@ -50,7 +47,7 @@ public class FrameworkConstants {
 		}
 	}
 
-	
+
 	private static final int EXPLICITWAIT= 10;
 
 	public static int getExplicitWait() {
@@ -61,7 +58,5 @@ public class FrameworkConstants {
 		return CONFIGFILEPATH;
 	}
 
-	public static String getChromeDriverPath() {
-		return CHROMEDRIVERPATH;
-	}
+
 }

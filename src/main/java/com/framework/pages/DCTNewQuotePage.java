@@ -13,8 +13,6 @@ public class DCTNewQuotePage extends BasePage{
 	private By effectivedate=By.xpath("//input[@fieldref='PolicyInput.EffectiveDate']");
 
 	public DCTNewQuotePage selectEntity(String entityType) {
-		
-
 		sendKeysWithoutClick(selectentitydropdown, entityType, WaitStrategy.PRESENCE, "Entity drop down");
 		return this;
 	}

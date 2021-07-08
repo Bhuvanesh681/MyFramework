@@ -4,7 +4,6 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
-
 import com.Framwork.enums.CategoryType;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -26,8 +25,8 @@ public final class ExtentReport {
 			ExtentSparkReporter spark=new ExtentSparkReporter(FrameworkConstants.getExtentReportFilePath());
 			extent.attachReporter(spark);
 			spark.config().setTheme(Theme.STANDARD);
-			spark.config().setDocumentTitle("My Report");
-			spark.config().setReportName("My new Framework");
+			spark.config().setDocumentTitle("CyberToDCT");
+			spark.config().setReportName("CyberToDCT Execution Report");
 		}
 	}
 

@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">2 methods, 2 failed,   </span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -102,7 +102,12 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.common.qa.testcases.DCTQuickQuoteTest" hash-for-method="DCTQuickQuoteFlowTest({lossdate=, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=New, producer...)">DCTQuickQuoteFlowTest({lossdate=, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=New, producer...)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.common.qa.testcases.DCTQuickQuoteTest" hash-for-method="DCTQuickQuoteFlowTest({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...)">DCTQuickQuoteFlowTest({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.common.qa.testcases.DCTQuickQuoteTest" hash-for-method="DCTQuickQuoteFlowTest1({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...)">DCTQuickQuoteFlowTest1({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -125,12 +130,12 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="DCTQuickQuoteFlowTest({lossdate=, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=New, producer...)">
-                  </a> <!-- DCTQuickQuoteFlowTest({lossdate=, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=New, producer...) -->
+                  <a name="DCTQuickQuoteFlowTest({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...)">
+                  </a> <!-- DCTQuickQuoteFlowTest({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...) -->
                   <span class="method-name">DCTQuickQuoteFlowTest</span>
-                  <span class="parameters">({lossdate=, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=New, produceremail=, ratablerevenue=10000, effectivedate=6/14/2021, insuredcontactemail=test@email.com, YearEstablished=, password=admin, insuredaddress=23, St taken, continutitydate=6/14/2021, browser=chrome, lossratio=61% to 100%, claimhistorycommants=testing, quoteprmium=, commission=20, company=Crum & Forster Specialty Insurance Company, state=NY, zip=14804, ecrimelosssubmitofliability=, insuredname=test0706, ExpandedFirstParty=yes, MultimediaCoverage=yes, yearsofpriorcoverage=20, aggregatelimitofliability=, WaitingPeriod=8, noofclaims=100, naicscode=, selecteddeductible=, Ecrime=no, testname=DCTQuickQuoteFlowTest, execute=yes, totallossincurred=3000000, guidelinedeductible=, insuredcontactname=bhuvanesh, domain=www, amountpaid=, insuredcontactphone=378873878, underwriter=Cheryl Shema, username=admin, status=})</span>
+                  <span class="parameters">({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, insuredaddress=23, St taken, claimhistorycommants=testing, quoteprmium=10000, state=NY, zip=14804, ecrimelosssubmitofliability=, brokername=Bhuvanesh, noofclaims=100, Ecrime=no, testname=DCTQuickQuoteFlowTest, execute=yes, totallossincurred=3000000, guidelinedeductible=, finalpremium=10000, domain=www, amountpaid=1000, insuredcontactphone=1112223333, status=, option=one, lossdate=06/30/2021, dependentbusinesssubmitofliability=, city=New York, accounttype=New, ratablerevenue=10000, effectivedate=6/14/2021, brokerfirm=Crum, continutitydate=6/14/2021, browser=chrome, lossratio=61% to 100%, commission=20, company=Crum & Forster Specialty Insurance Company, insuredname=test0706, ExpandedFirstParty=yes, MultimediaCoverage=yes, yearsofpriorcoverage=20, aggregatelimitofliability=$500,000, WaitingPeriod=8, naicscode=, selecteddeductible=1000, priorclaimhistorystatus=Open, insuredcontactname=bhuvanesh, underwriter=Cheryl Shema, username=admin})</span>
                   <div class="stack-trace">java.lang.NullPointerException
-	at com.framework.pages.QuickQuotePage.covereageOptions(QuickQuotePage.java:124)
+	at com.framework.pages.QuickQuotePage.limitanddeductible(QuickQuotePage.java:180)
 	at com.common.qa.testcases.DCTQuickQuoteTest.DCTQuickQuoteFlowTest(DCTQuickQuoteTest.java:39)
 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
@@ -141,7 +146,30 @@
 ... Removed 9 stack frames
 </div> <!-- stack-trace -->
                   <em>
-(To check whether user is able to create quote using Quick Quote)                  </em>
+(To check whether user is able to create quote using Quick Quote on Chrome)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="DCTQuickQuoteFlowTest1({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...)">
+                  </a> <!-- DCTQuickQuoteFlowTest1({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...) -->
+                  <span class="method-name">DCTQuickQuoteFlowTest1</span>
+                  <span class="parameters">({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, insuredaddress=23, St taken, claimhistorycommants=testing, quoteprmium=, state=NY, zip=14804, ecrimelosssubmitofliability=, brokername=Bhuvanesh, noofclaims=100, Ecrime=no, testname=DCTQuickQuoteFlowTest1, execute=yes, totallossincurred=3000000, guidelinedeductible=, finalpremium=, domain=www, amountpaid=1000, insuredcontactphone=1112223333, status=, option=, lossdate=06/30/2021, dependentbusinesssubmitofliability=, city=New York, accounttype=New, ratablerevenue=10000, effectivedate=6/14/2021, brokerfirm=Crum, continutitydate=6/14/2021, browser=firefox, lossratio=61% to 100%, commission=20, company=Crum & Forster Specialty Insurance Company, insuredname=test0706, ExpandedFirstParty=yes, MultimediaCoverage=yes, yearsofpriorcoverage=20, aggregatelimitofliability=, WaitingPeriod=8, naicscode=, selecteddeductible=, priorclaimhistorystatus=Open, insuredcontactname=bhuvanesh, underwriter=Cheryl Shema, username=admin})</span>
+                  <div class="stack-trace">java.lang.IllegalArgumentException: Keys to send should be a not null CharSequence
+	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:97)
+	at com.framework.pages.BasePage.sendKeysWithoutClick(BasePage.java:34)
+	at com.framework.pages.QuickQuotePage.priorClaimHistory(QuickQuotePage.java:124)
+	at com.common.qa.testcases.DCTQuickQuoteTest.DCTQuickQuoteFlowTest1(DCTQuickQuoteTest.java:68)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 9 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(To check whether user is able to create quote using Quick Quote on Firefox)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -155,13 +183,13 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; data-provider-thread-count=&quot;1&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; data-provider-thread-count=&quot;2&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;com.framework.listeners.ListenerClass&quot;/&gt;
     &lt;listener class-name=&quot;com.framework.listeners.MetholdInterceptor&quot;/&gt;
     &lt;listener class-name=&quot;com.framework.listeners.AnnotationTransformer&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;1&quot; name=&quot;Test&quot; parallel=&quot;methods&quot;&gt;
+  &lt;test thread-count=&quot;2&quot; name=&quot;Test&quot; parallel=&quot;methods&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.common.qa.testcases.DCTQuickQuoteTest&quot;/&gt;
     &lt;/classes&gt;
@@ -203,16 +231,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'DCTQuickQuoteFlowTest')
 data.setCell(0, 2, 'com.common.qa.testcases.DCTQuickQuoteTest')
-data.setCell(0, 3, 39002);
+data.setCell(0, 3, 28523);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'DCTQuickQuoteFlowTest1')
+data.setCell(1, 2, 'com.common.qa.testcases.DCTQuickQuoteTest')
+data.setCell(1, 3, 26428);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 39 seconds</span>
+              <span class="suite-total-time">Total running time: 54 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -240,18 +272,32 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.common.qa.testcases.DCTQuickQuoteTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">setUp([{lossdate=, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=New, produce...)</span>
+                <span class="method-name">setUp([{lossdate=06/30/2021, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=Ne...)</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp([{lossdate=06/30/2021, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=Ne...)</span>
+                <span class="method-start">2 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">DCTQuickQuoteFlowTest({lossdate=, dependentbusinesssubmitofliability=, city=New York, nyftz=yes, accounttype=New, producer...)</span>
-                <span class="method-start">4036 ms</span>
+                <span class="method-name">DCTQuickQuoteFlowTest1({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...)</span>
+                <span class="method-start">13406 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">DCTQuickQuoteFlowTest({nyftz=yes, produceremail=, insuredcontactemail=test@email.com, YearEstablished=, password=admin, in...)</span>
+                <span class="method-start">14449 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">43178 ms</span>
+                <span class="method-start">39941 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">43103 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

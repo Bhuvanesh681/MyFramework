@@ -5,12 +5,12 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import com.Framwork.enums.WaitStrategy;
 import com.framework.driver.DriverManager;
+import com.framework.helper.JavaScriptHelper;
 import com.framework.utils.DynamicXpathUtils;
 
 public class QuickQuotePage extends BasePage {
 
-
-	//private static By accouttyperadiobtn=By.xpath("//input[@value='%account_type%']");
+	//General Screen fields
 	private static String accoutTypeStr="//input[@value='%s']";
 	private static String coverageoptionstryes="(//input[@fieldref='LineInput.%s'])[1]";
 	private static String coverageoptionstrno="(//input[@fieldref='LineInput.%s'])[2]";
@@ -34,26 +34,40 @@ public class QuickQuotePage extends BasePage {
 	private static By commissiontxtbox=By.xpath("//input[@fieldref='LineInput.CommissionPercentage']");
 	private static By writingcompanydrpdwn=By.xpath("//input[@fieldref='LineUnderwritingInput.WritingCompany']");
 
+
+	//Hazard Group fields
 	private static By medicalifo=By.xpath("//input[@name='int_4C7_1']");
 	private static By dependency=By.xpath("//input[@name='int_4C7_5']");
 
+
+	//Prior Claim History fields
 	private static By yearsofpriorcoveragetxtbx=By.xpath("//input[@fieldref='LineInput.YearsOfPriorCoverage']");
 	private static By noofclaimstxtbx=By.xpath("//input[@fieldref='LineInput.NumberOfClaims']");
 	private static By totallossincurredtxtbx=By.xpath("//input[@fieldref='LineInput.TotalLoss']");
 	private static By lossratiodrpdwn=By.xpath("//input[@fieldref='LineInput.LossRatio']");
 	private static By claimhistorycommenttxtarea=By.xpath("//textarea[@fieldref='LineInput.ClaimComments']");
+
 	private static By priorclainaddbtn=By.xpath("(//span[@class='g-btn-text'][contains(.,'ADD')])[1]");
-	private static By priorclaimlossdate=By.xpath("//input[@fieldref='LossInput.DateOfLoss']");
-	private static By priorclaimamountpaid=By.xpath("//input[@fieldref='LossInput.AmountPaid']");
-	private static By priorclaimhistorystatus=By.xpath("//input[@fieldref='LossInput.Status']");
+	private static By priorclaimlossdatecal=By.xpath("//input[@fieldref='LossInput.DateOfLoss']");
+	private static By priorclaimamountpaidtxt=By.xpath("//input[@fieldref='LossInput.AmountPaid']");
+	private static By priorclaimhistorystatusselect=By.xpath("//input[@fieldref='LossInput.Status']");
 	private static By priorclaimhistorycancelbtn=By.xpath("//a[@role='button'][contains(.,'X')]");
+
+	//Limits/Deductible fields
+	private static By optiononecheckbx=By.xpath("(//input[@type='checkbox'])[3]");
+	private static By aggregatelimitofliabilitydropdown=By.xpath("//input[@fieldref='CovTechInput.AggregateLimit']");
+	private static By selecteddeductibletxtbx=By.xpath("//input[@fieldref='CovTechInput.SelectedDeductible']");
+	private static By quotepremiumtxtbx=By.xpath("//input[@fieldref='CovTechInput.TargetPremium']");
+	private static By finalpremiumtxtbx=By.xpath("//input[@fieldref='CovTechInput.FinalPremium']");
+
 
 	private static By nextbtn=By.xpath("//span[@class='g-btn-text'][contains(.,'Next')]");
 
-
+	//Method to enters all fields value in General Screen
 	public QuickQuotePage enterQuickQuoteGenearlInfo(String accounttype,String insuredname,String insuredaddress,
 			String city,String state,String zip,String insuredcontactemail,String insuredcontactphone,
 			String domain,String yearestablised,String ratablerevenue,String underwriter,
+			String brokername,String brokerfirm,
 			String produceremail,String effectivedate,String continutydate,
 			String commission,String company ) throws InterruptedException {
 
@@ -75,15 +89,18 @@ public class QuickQuotePage extends BasePage {
 		sendKeysWithoutClick(yearinbusinessdrpdwn, yearestablised,WaitStrategy.PRESENCE, "Year Establised drop down");
 		sendKeys(ratablerevenuetxtbx, ratablerevenue, WaitStrategy.PRESENCE, "Ratable revenue text box");
 		sendKeysWithoutClick(underwriterdropdown, underwriter,  WaitStrategy.PRESENCE, "Underwriter Select drop down");
+		sendKeys(brokernametxtbx, brokername, WaitStrategy.PRESENCE, "Broker Name text field");
+		sendKeys(brokerfirmtxtbx, brokerfirm, WaitStrategy.PRESENCE, "Broker Firm text field");
 		sendKeys(produceremailtxtbx, produceremail, WaitStrategy.PRESENCE, "Producer Email text box");
 		sendKeysWithoutClick(effectivedateselect, effectivedate, WaitStrategy.PRESENCE, "Select Effective date");
 		sendKeysWithoutClick(continutydateselect, continutydate, WaitStrategy.PRESENCE, "Select Continuty date");
 		sendKeys(commissiontxtbox, commission, WaitStrategy.PRESENCE, "Commission txt box");
 		sendKeysWithEnter(writingcompanydrpdwn, company, WaitStrategy.PRESENCE, "Writing company name txt box");
-		
+
 		return this;
 	}
 
+	//Method to enters all fields value in Hazard Group Screen
 	public QuickQuotePage hazardgroupentry() {
 		((JavascriptExecutor) DriverManager.getDriver()).executeScript("window.scrollBy(0,500)", "");
 		sendKeys(medicalifo, "120", WaitStrategy.PRESENCE, "Medical info");
@@ -91,19 +108,50 @@ public class QuickQuotePage extends BasePage {
 		return this;		
 	}
 
+	//Method to enters all fields value in Prior Claim History Screen
 	public QuickQuotePage priorClaimHistory(String yearsofpriorcoverage,String noofclaims,String totallossincurred,
-			String lossratio,String claimhistorycomment) throws InterruptedException {
-		((JavascriptExecutor) DriverManager.getDriver()).executeScript("window.scrollBy(0,500)", "");
+			String lossratio,String claimhistorycomment,String numberofclaims,String priorclaimlossdate,
+			String priorclaimamotpaid,String priorclaimhistorystatus) throws InterruptedException {
+		//((JavascriptExecutor) DriverManager.getDriver()).executeScript("window.scrollBy(0,500)", "");
+		JavaScriptHelper.scrollDownByPixel(500);
 		sendKeys(yearsofpriorcoveragetxtbx, yearsofpriorcoverage, WaitStrategy.PRESENCE, "yearsofpriorcoverage txt bx");
 		sendKeys(noofclaimstxtbx, noofclaims, WaitStrategy.PRESENCE, "noofclaimstxtbx txt bx");
 		sendKeys(totallossincurredtxtbx, totallossincurred, WaitStrategy.PRESENCE, "totallossincurredtxtbx txt bx");
 		sendKeysWithEnter(lossratiodrpdwn, lossratio, WaitStrategy.PRESENCE, "lossratiodrpdwn txt bx");
 		sendKeys(claimhistorycommenttxtarea, claimhistorycomment, WaitStrategy.PRESENCE, "claim history comment text area");
-
+		//click(priorclainaddbtn, WaitStrategy.CLIKABLE, "Prior Claim Add Button");
+		if(numberofclaims.equalsIgnoreCase("one")) {
+		addPriorClaim(numberofclaims);
+		sendKeysWithoutClick(priorclaimlossdatecal, priorclaimlossdate, WaitStrategy.PRESENCE, "Prior Claim Loss date calender");
+		sendKeysWithoutClick(priorclaimamountpaidtxt, priorclaimamotpaid, WaitStrategy.PRESENCE, "Prior Claim amount paid field");
+		sendKeysWithoutClick(priorclaimhistorystatusselect, priorclaimhistorystatus, WaitStrategy.PRESENCE, "priorclaimhistorystatusselect");
+		}else {
+			addmultiplePriorClaims(numberofclaims);
+		}
+		
 		return this;
 
 	}
+	
+	private void addPriorClaim(String numberOfClaims) {
+		int noofclaim=Integer.parseInt(numberOfClaims);
+		while(noofclaim>0) {
+		click(priorclainaddbtn, WaitStrategy.CLIKABLE, "Prior Claim Add Button");
+		noofclaim--;
+		}
+	}
+	private void addmultiplePriorClaims(String numberOfClaims) {
+		int noofclaim=Integer.parseInt(numberOfClaims);
+		while(noofclaim>0) {
+		click(priorclainaddbtn, WaitStrategy.CLIKABLE, "Prior Claim Add Button");
+		noofclaim--;
+		}
+		/*
+		 * Here need to add code for adding multiple prior claims
+		 */
+	}
 
+	//Method to enters all fields value in Coverage and Pricing Screen
 	public QuickQuotePage covereageOptions(String expandedfirstparty, String multimediacoverage,String ecrime,String waitingperiod) {
 		if(expandedfirstparty.equalsIgnoreCase("yes") ) {
 			//Bydefault yes is selected ---no need to select
@@ -143,6 +191,22 @@ public class QuickQuotePage extends BasePage {
 
 	}
 
+	//Method to enter all value in Limit/deductible screen
+	public QuickQuotePage limitanddeductible(String option,String aggregatelimitofliability,String selecteddeductible,
+			String quoteprmium,String finalpremium) {
+		if(option.equalsIgnoreCase("one")) {
+			click(optiononecheckbx, WaitStrategy.CLIKABLE, "Option One undet Limit and Deductible");
+		}
+		sendKeysWithoutClick(aggregatelimitofliabilitydropdown, aggregatelimitofliability, WaitStrategy.PRESENCE, "Aggregate Limit Liability drop down");
+		sendKeys(selecteddeductibletxtbx, selecteddeductible, WaitStrategy.PRESENCE, "Selected Deductible text box");
+		sendKeys(quotepremiumtxtbx, quoteprmium, WaitStrategy.PRESENCE, "Quote Premium text box");
+		sendKeys(finalpremiumtxtbx, finalpremium, WaitStrategy.PRESENCE, "Final Premium text box");
+		return this;
+
+	}
+
+
+	////Method to enters all fields value in 
 	public QuickQuotePage generalSection() throws InterruptedException {
 		Thread.sleep(1000);
 		((JavascriptExecutor) DriverManager.getDriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
