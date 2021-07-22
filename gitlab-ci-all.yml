@@ -1,0 +1,78 @@
+variables:
+  AWS_REGISTRY_IMAGE: 134046447925.dkr.ecr.us-east-1.amazonaws.com/udoc-qaautomation:latest
+
+stages:
+  - package
+  - build
+  - deploy
+  - test
+
+maven-package:
+  stage: package
+  image: markhobson/maven-chrome:jdk-11
+  tags:
+    - docker-d
+  artifacts:
+    paths:
+      - target
+  script:
+    - mvn clean package -DskipTests 
+
+# Do docker builds
+docker-build:
+  # Official docker image
+  stage: build
+  image: docker:latest
+  #image: 134046447925.dkr.ecr.us-east-1.amazonaws.com/devops-dockerawscli:latest
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+  tags:
+    - docker-d
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    #- docker build --pull -t "$AWS_REGISTRY_IMAGE" .  
+    - docker push "$CI_REGISTRY_IMAGE"
+    #- aws ecr get-login --no-include-email --region us-east-1
+    #- docker tag $CI_REGISTRY_IMAGE $AWS_REGISTRY_IMAGE
+    #- docker push $AWS_REGISTRY_IMAGE
+
+docker-ecr-push:
+  # Official docker image
+  stage: deploy
+  #image: docker:latest
+  image: 134046447925.dkr.ecr.us-east-1.amazonaws.com/devops-dockerawscli:latest
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+  tags:
+    - docker-d
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - echo "$CI_REGISTRY_IMAGE"
+    - echo "$CI_REGISTRY"
+    - docker pull "$CI_REGISTRY_IMAGE"
+    - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 134046447925.dkr.ecr.us-east-1.amazonaws.com
+    # - aws ecr get-login --no-include-email --region us-east-1
+    - docker tag $CI_REGISTRY_IMAGE $AWS_REGISTRY_IMAGE
+    - docker push $AWS_REGISTRY_IMAGE
+
+smoke-test:
+  stage: test
+  image: 134046447925.dkr.ecr.us-east-1.amazonaws.com/udoc-qaautomation:latest
+  #image: registry.gitlab.com/qaautomation1/udoc-gitops
+  tags:
+    - docker-d
+  script:
+    - cd /usr/src/app
+    - ls
+    - java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* -DtestEnv=QA -DtestBrowser=chrome org.testng.TestNG ProfitCentersTest.xml

@@ -6,14 +6,13 @@
     <listener class-name="com.framework.listeners.MetholdInterceptor"/>
     <listener class-name="com.framework.listeners.AnnotationTransformer"/>
   </listeners>
-  <test thread-count="5" name="Test(failed)" parallel="methods">
+  <test thread-count="5" name="Test(failed)" parallel="classes">
     <classes>
       <class name="com.common.qa.testcases.DCTQuickQuoteTest">
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
           <include name="DCTQuickQuoteFlowTest" invocation-numbers="0"/>
-          <include name="DCTQuickQuoteFlowTest1" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.common.qa.testcases.DCTQuickQuoteTest -->
     </classes>

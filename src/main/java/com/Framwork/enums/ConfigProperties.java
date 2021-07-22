@@ -2,6 +2,8 @@ package com.Framwork.enums;
 
 public enum ConfigProperties {
 	URL,
+	USERNAME,
+	PASSWORD,
 	OVERRIDEREPORTS,
 	PASSEDSTEPSSCREENSHOTS,
 	FAILEDSTEPSSCREENSHOTS,

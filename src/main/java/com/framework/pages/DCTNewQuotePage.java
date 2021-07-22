@@ -12,8 +12,8 @@ public class DCTNewQuotePage extends BasePage{
 	private By productnumber=By.xpath("//input[@fieldref='PolicyInput.ProductNumber']");
 	private By effectivedate=By.xpath("//input[@fieldref='PolicyInput.EffectiveDate']");
 
-	public DCTNewQuotePage selectEntity(String entityType) {
-		sendKeysWithoutClick(selectentitydropdown, entityType, WaitStrategy.PRESENCE, "Entity drop down");
+	public DCTNewQuotePage selectEntity(String entityType) throws InterruptedException {
+		clearandsendKeys(selectentitydropdown, entityType, WaitStrategy.PRESENCE, "Entity drop down");
 		return this;
 	}
 	
@@ -35,11 +35,11 @@ public class DCTNewQuotePage extends BasePage{
 		return this;
 	}
 
-	public QuickQuotePage clickonNewQuoteBtn() {
+	public GeneralScreenPage clickonNewQuoteBtn() {
 		//JavascriptExecutor executor1 = (JavascriptExecutor) DriverManager.getDriver();
 		//executor1.executeScript("arguments[0].click();", startanewquotebtn);
 		click(startanewquotebtn, WaitStrategy.PRESENCE, "Start a new quote button");
-		return new QuickQuotePage();
+		return new GeneralScreenPage();
 	}
 
 

@@ -9,13 +9,15 @@ import com.framework.pages.DCTLoginPage;
 import com.framework.utils.PropertyUtils;
 
 
-public class DCTQuickQuoteTest extends BaseTest{
-	private DCTQuickQuoteTest() {
+public class DCTQuickQuoteTest1 extends BaseTest{
+	private DCTQuickQuoteTest1() {
 	}
 
+	
+	
 	@FrameworkAnnotation(author= {"bhuvanesh"},category= {CategoryType.REGRESSION,CategoryType.SANITY})
 	@Test
-	public void DCTQuickQuoteFlowTest(Map<String,String> data) throws InterruptedException {
+	public void DCTQuickQuoteFlowTest1(Map<String,String> data) throws InterruptedException {
 
 		new DCTLoginPage().enterUserName(PropertyUtils.get(ConfigProperties.USERNAME))
 		.enterPassword(PropertyUtils.get(ConfigProperties.PASSWORD))
@@ -53,7 +55,8 @@ public class DCTQuickQuoteTest extends BaseTest{
 
 	}
 
-	
+
+
 
 
 

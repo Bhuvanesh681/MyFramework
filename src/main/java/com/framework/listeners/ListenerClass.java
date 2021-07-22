@@ -51,7 +51,7 @@ public class ListenerClass implements ITestListener,ISuiteListener{
 	}
 
 	public void onTestSkipped(ITestResult result) {
-		ExtentLogger.skip(result.getMethod().getMethodName()+" is Skipped");
+		ExtentLogger.skip(result.getMethod().getMethodName()+" is Skipped",true);
 		
 	}
 

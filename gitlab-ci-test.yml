@@ -1,0 +1,25 @@
+stages:
+  - test
+
+smoke-test:
+  stage: test
+  image: registry.gitlab.com/qaautomation1/cnf_submission_automation_test:latest
+  variables:
+    GIT_STRATEGY: none
+  tags:
+    - docker
+  script:
+    - cd /usr/src/app
+    - java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* org.testng.TestNG testng.xml
+
+
+    #https://stackoverflow.com/questions/42847732/how-to-run-testng-xml-from-maven-command-line
+    #- mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
+    
+    #- mvn test -Dtest=pom.xml
+    
+    #- mvn test -Dtest=com.submission.qa.testcases.LoginPageTest
+
+
+
+  

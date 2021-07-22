@@ -1,0 +1,26 @@
+From markhobson/maven-chrome:jdk-11
+
+# Install project dependencies and keep sources
+# make source folder
+RUN mkdir -p /usr/src/app
+# Workspace
+WORKDIR /usr/src/app
+
+# ADD .jar under target from host into this image
+ADD target/selenium-docker.jar                   selenium-docker.jar
+ADD target/selenium-docker-tests.jar             selenium-docker-tests.jar
+ADD target/libs                                  libs
+
+
+# ADD any other dependency like .csv / .json / .xls
+ADD pom.xml                                       pom.xml
+
+ADD InputData                                     InputData
+ADD Configuration                                 Configuration
+ADD OutputData                                    OutputData
+ADD test-output									  test-output
+
+
+# ADD test suite files
+ADD TestNG-Driver/ProfitCentersTest.xml           ProfitCentersTest.xml
+ADD TestNG-Driver/SmokeTestsuDoc.xml              SmokeTestsuDoc.xml
