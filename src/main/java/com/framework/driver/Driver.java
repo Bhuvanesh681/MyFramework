@@ -4,10 +4,10 @@ import java.net.MalformedURLException;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-import com.Framwork.enums.ConfigProperties;
 import com.framework.exception.BrowserInvocationFailedException;
 import com.framework.factories.DriverFactory;
 import com.framework.utils.PropertyUtils;
+import com.Framwork.enums.ConfigProperties;
 
 
 /**

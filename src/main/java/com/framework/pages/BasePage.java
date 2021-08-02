@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import com.Framwork.enums.WaitStrategy;
 import com.framework.driver.DriverManager;
 import com.framework.factories.ExplicitWaitFactory;
+import com.framework.helper.JavaScriptHelper;
 import com.framework.reports.ExtentLogger;
 
 public class BasePage {
@@ -20,6 +21,12 @@ public class BasePage {
 		}
 
 	}
+	
+	protected void clickUsingJS(By  ele) {
+		JavaScriptHelper.buttonClickUsingJS(DriverManager.getDriver().findElement(ele));
+	}
+	
+	
 	protected void sendKeys(By by, String value, WaitStrategy waitstrategy,String elementname) {
 		ExplicitWaitFactory.performExplicitWait(waitstrategy, by).sendKeys(value);
 		try {

@@ -30,7 +30,7 @@ public class PriorClaimHistoryPage extends BasePage {
 			String claimhistorycomment) throws InterruptedException {
 	JavaScriptHelper.scrollUpVertically();
 		if(numberofclaims.equalsIgnoreCase("1")) {
-
+		//	click(priorclainaddbtn, WaitStrategy.CLIKABLE, "Prior Claim Add Button");
 			sendKeys(priorclaimlossdatecal, priorclaimlossdate, WaitStrategy.PRESENCE, "Prior Claim Loss date calender");
 			sendKeysWithoutClick(totalincurredtxt, priorclaimamotpaid, WaitStrategy.PRESENCE, "Prior Claim amount paid field");
 			clearandsendKeys(priorclaimhistorystatusselect, priorclaimhistorystatus, WaitStrategy.PRESENCE, "priorclaimhistorystatusselect");

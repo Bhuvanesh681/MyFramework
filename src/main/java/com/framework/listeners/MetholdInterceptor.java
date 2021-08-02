@@ -23,8 +23,6 @@ public class MetholdInterceptor implements IMethodInterceptor {
 				if(methods.get(i).getMethod().getMethodName().equalsIgnoreCase(list1.get(j).get("testname")) &&
 					list1.get(i).get("execute").equalsIgnoreCase("yes")) {
 						methods.get(i).getMethod().setDescription(list1.get(j).get("testdescription"));
-						//methods.get(i).getMethod().setInvocationCount(Integer.parseInt(list1.get(j).get("count")));
-						//methods.get(i).getMethod().setPriority(Integer.parseInt(list1.get(j).get("priority")));
 						result.add(methods.get(i));
 					}
 				

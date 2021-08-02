@@ -1,11 +1,8 @@
 package com.framework.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.interactions.SendKeysAction;
 
 import com.Framwork.enums.WaitStrategy;
-import com.framework.driver.DriverManager;
 import com.framework.helper.JavaScriptHelper;
 import com.framework.utils.DynamicXpathUtils;
 
@@ -16,8 +13,8 @@ public class GeneralScreenPage extends BasePage{
 	private static String coverageoptionstryes="(//input[@fieldref='LineInput.%s'])[1]";
 	private static String coverageoptionstrno="(//input[@fieldref='LineInput.%s'])[2]";
 	private static By insuredNametxtbx=By.xpath("//input[@fieldref='AccountInput.Name']");
-	private static By insuredaddresstxtbx=By.xpath("//textarea[@fieldref='AccountInput.Address1']");
-	private static By insuredaddress2txtbx=By.xpath("//textarea[@fieldref='AccountInput.Address2']");
+	private static By insuredaddresstxtbx=By.xpath("//input[@fieldref='AccountInput.Address1']");
+	private static By insuredaddress2txtbx=By.xpath("//input[@fieldref='AccountInput.Address2']");
 	private static By citytxtbx=By.xpath("//input[@fieldref='AccountInput.City']");
 	private static By stateselectdrpdwn=By.xpath("//input[@fieldref='AccountInput.State']");
 	private static By zipcodetxtbx=By.xpath("//input[@fieldref='AccountInput.ZipCode']");

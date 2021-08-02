@@ -1,7 +1,7 @@
 package com.framework.constants;
 
-import com.Framwork.enums.ConfigProperties;
 import com.framework.utils.PropertyUtils;
+import com.Framwork.enums.ConfigProperties;
 
 public class FrameworkConstants {
 

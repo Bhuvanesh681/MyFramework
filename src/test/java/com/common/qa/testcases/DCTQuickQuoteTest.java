@@ -1,7 +1,9 @@
 package com.common.qa.testcases;
 
 import java.util.Map;
+
 import org.testng.annotations.Test;
+
 import com.Framwork.enums.CategoryType;
 import com.Framwork.enums.ConfigProperties;
 import com.framework.annotations.FrameworkAnnotation;
@@ -42,11 +44,18 @@ public class DCTQuickQuoteTest extends BaseTest{
 				)
 		.covereageOptions(data.get("expandedfirstparty"), data.get("multimediacoverage"), data.get("ecrime"),
 				data.get("increasesublimits"), data.get("fraudulentinvoice"), data.get("waitingperiod"),
-				data.get("extracoveragecomment"), data.get("additionalcoveragedescription"), data.get("coveragepremiun"));
+				data.get("extracoveragecomment"), data.get("additionalcoveragedescription"), data.get("coveragepremiun"))
+		
+		.enterScheduleandRatingValues(data.get("FinancialCondition_value"),data.get("FinancialCondition_comment"),
+				data.get("MaturityOfBusiness_value"),data.get("MaturityOfBusiness_comment"),
+				data.get("QualityOfManagement_value"),data.get("QualityOfManagement_comment"),
+				data.get("ScheduleRatingFactor"))
 
-		/*.limitanddeductible(data.get("one"), data.get("aggregatelimitofliability"),
-				data.get("ecrimelosssubmitofliability"), data.get("quoteprmium"),
-				data.get("finalpremium"));*/
+		.limitanddeductible(data.get("limitanddeductibleoption"), data.get("aggregatelimitofliability"),
+				data.get("ransomwaresublimitliability"), data.get("ransomwarecoinsurance"),
+				data.get("standardpremium"))
+		.optionalcoverageTaxAndSurchage().redirectToQuotePage();
+		
 
 
 
