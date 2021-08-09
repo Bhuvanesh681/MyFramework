@@ -44,7 +44,7 @@ public final class DriverFactory {
 				cap.setBrowserName(BrowserType.FIREFOX);
 
 				
-					driver=new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+					driver=new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.SELENIUMGRIDURL)), cap);
 				
 
 			}else {
