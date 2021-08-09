@@ -27,7 +27,7 @@ public class ListenerClass implements ITestListener,ISuiteListener{
 		
 			ExtentReport.flushReports();
 			
-			EmailUtils.sendEmailReportWithAttachment("Bhuvanesh.Sikarwar@cfins.com", "July@181", "abhishek.banerjee@cfins.com");
+			EmailUtils.sendEmailReportWithAttachment("Bhuvanesh.Sikarwar@cfins.com", "July@181", "Bhuvanesh.Sikarwar@cfins.com");
 		
 	}
 
