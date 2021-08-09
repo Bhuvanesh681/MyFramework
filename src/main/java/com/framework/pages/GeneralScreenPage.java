@@ -31,7 +31,9 @@ public class GeneralScreenPage extends BasePage{
 	private static By produceremailtxtbx=By.xpath("//input[@fieldref='ProducerInfoOutput.Email']");
 	//private static By brokerfirmtxtbx=By.xpath("//input[@fieldref='ProducerInfoOutput.Name']");
 	private static By effectivedateselect=By.xpath("//input[@fieldref='PolicyInput.EffectiveDate']");
+	private static By policytermdrpdwn=By.xpath("//input[@fieldref='PolicyInput.Term']");
 	private static By continutydateselect=By.xpath("//input[@fieldref='PolicyInput.ContinuityDate']");
+	private static By effectivedateTBDcheckbx=By.xpath("(//input[@fieldref='PolicyInput.EffectiveDateTBD'])[1]");
 	private static By commissiontxtbox=By.xpath("//input[@fieldref='LineInput.CommissionPercentage']");
 	private static By writingcompanydrpdwn=By.xpath("//input[@fieldref='LineUnderwritingInput.WritingCompany']");
 	private static By NAICSCcodedropdwn=By.xpath("//input[@fieldref='PolicyOutputNonShredded.NAICSCodeSearchResult']");
@@ -50,7 +52,7 @@ public class GeneralScreenPage extends BasePage{
 			String domain,String yearestablised,String ratablerevenue,
 			String quoteversiondescription,String underwriter,
 			String producername,String producercontact,String produceremail,
-			String effectivedate,String continutydate,String company,
+			String effectivedate,String policyterm,String effectivedateTBD,String continutydate,String company,
 			String naicsccode,String commission,String ratinglevel,
 			String nyftz, String underwritercomment ) throws InterruptedException {
 
@@ -91,11 +93,14 @@ public class GeneralScreenPage extends BasePage{
 		sendKeys(producercontacttxtbx, producercontact, WaitStrategy.PRESENCE, "Producer COntact text field");
 
 		sendKeys(produceremailtxtbx, produceremail, WaitStrategy.PRESENCE, "Producer Email text box");
-
+		if(effectivedateTBD.equalsIgnoreCase("yes")) {
+			click(effectivedateTBDcheckbx, WaitStrategy.NONE, "Effective Date Check Box");
+			Thread.sleep(2000);
+		}else {
 		clearandsendKeys(effectivedateselect, effectivedate, WaitStrategy.PRESENCE, "Select Effective date");
-
+		sendKeysWithoutClick(policytermdrpdwn, policyterm, WaitStrategy.PRESENCE, "Policy term drop down");
 		clearandsendKeys(continutydateselect, continutydate, WaitStrategy.PRESENCE, "Select Continuty date");
-	
+		}
 		sendKeysWithoutClick(writingcompanydrpdwn, company, WaitStrategy.PRESENCE, "Writing company name txt box");
 
 		sendKeysWithoutClick(NAICSCcodedropdwn, naicsccode, WaitStrategy.PRESENCE, "NAICSC Code drop down");

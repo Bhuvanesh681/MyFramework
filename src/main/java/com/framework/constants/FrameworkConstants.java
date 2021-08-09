@@ -13,6 +13,7 @@ public class FrameworkConstants {
 	private static final String EXCELPATH=RESOURCEPATH+"/excel/testdata.xlsx";
 	private static final String RUNMANAGERSHEET="RUNMANAGER";
 	private static final String ITERATIONDATASHEET="DATA";
+	private static final String CLAIMDATASHEET="PriorClaim";
 	private static final String EXTENTREPORTPATH=System.getProperty("user.dir")+"/extent-test-output";
 	private static String extentReportFilePath="";
 
@@ -23,6 +24,10 @@ public class FrameworkConstants {
 
 	public static String getIterationDataSheet() {
 		return ITERATIONDATASHEET;
+	}
+	
+	public static String getClaimDataSheet() {
+		return CLAIMDATASHEET;
 	}
 	
 

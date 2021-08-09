@@ -12,6 +12,7 @@ import com.framework.constants.FrameworkConstants;
 public final class DataProviderUtils {
 	private static List<Map<String, String>> list=new ArrayList<Map<String,String>>();
 
+
 	private DataProviderUtils() {
 
 	}
@@ -39,5 +40,6 @@ public final class DataProviderUtils {
 
 
 	}
+
 
 }

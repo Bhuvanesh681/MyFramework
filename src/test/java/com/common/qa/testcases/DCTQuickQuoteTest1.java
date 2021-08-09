@@ -15,11 +15,9 @@ public class DCTQuickQuoteTest1 extends BaseTest{
 	private DCTQuickQuoteTest1() {
 	}
 
-	
-	
 	@FrameworkAnnotation(author= {"bhuvanesh"},category= {CategoryType.REGRESSION,CategoryType.SANITY})
 	@Test
-	public void DCTQuickQuoteFlowTest1(Map<String,String> data) throws InterruptedException {
+	public void QuickQuoteFlowTest1(Map<String,String> data) throws InterruptedException {
 
 		new DCTLoginPage().enterUserName(PropertyUtils.get(ConfigProperties.USERNAME))
 		.enterPassword(PropertyUtils.get(ConfigProperties.PASSWORD))
@@ -37,7 +35,7 @@ public class DCTQuickQuoteTest1 extends BaseTest{
 				data.get("quoteversiondescription"),
 				data.get("underwriter"),data.get("producerrname"),data.get("producercontact"),
 				data.get("produceremail"),
-				data.get("effectivedate"),data.get("continutitydate"),
+				data.get("effectivedate"),data.get("policyterm"),data.get("effectivedateTBD"),data.get("continutitydate"),
 				data.get("company"),data.get("naicscode"),data.get("commission"),
 				data.get("ratinglevel") , data.get("nyftz"), data.get("underwritercomment") )
 
@@ -46,19 +44,25 @@ public class DCTQuickQuoteTest1 extends BaseTest{
 				)
 		.covereageOptions(data.get("expandedfirstparty"), data.get("multimediacoverage"), data.get("ecrime"),
 				data.get("increasesublimits"), data.get("fraudulentinvoice"), data.get("waitingperiod"),
-				data.get("extracoveragecomment"), data.get("additionalcoveragedescription"), data.get("coveragepremiun"));
+				data.get("extracoveragecomment"), data.get("additionalcoveragedescription"), data.get("coveragepremiun"))
+		
+		.enterScheduleandRatingValues(data.get("FinancialCondition_value"),data.get("FinancialCondition_comment"),
+				data.get("MaturityOfBusiness_value"),data.get("MaturityOfBusiness_comment"),
+				data.get("QualityOfManagement_value"),data.get("QualityOfManagement_comment")
+				)
 
-		/*.limitanddeductible(data.get("one"), data.get("aggregatelimitofliability"),
-				data.get("ecrimelosssubmitofliability"), data.get("quoteprmium"),
-				data.get("finalpremium"));*/
+		.limitanddeductible(data.get("limitanddeductibleoption"), data.get("aggregatelimitofliability"),
+				data.get("ransomwaresublimitliability"), data.get("ransomwarecoinsurance")
+				)
+		.optionalcoverageTaxAndSurchage().redirectToQuotePage();
+		
 
 
 
 
 	}
 
-
-
+	
 
 
 

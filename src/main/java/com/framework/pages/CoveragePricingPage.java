@@ -1,5 +1,7 @@
 package com.framework.pages;
 
+import javax.xml.xpath.XPath;
+
 import org.openqa.selenium.By;
 
 import com.Framwork.enums.WaitStrategy;
@@ -54,15 +56,12 @@ public class CoveragePricingPage extends BasePage {
 	private static By scheduleratingcomments=By.xpath("//textarea[@fieldref='Mods.ScheduleRatingComments']");
 
 
-
-
-
 	//Limits/Deductible fields
-	private static By optiononecheckbx=By.xpath("(//input[@fieldref='CyberLimitsInput.Select'])[1]");
-	private static By aggregatelimitofliabilitydropdown=By.xpath("//input[@fieldref='CyberLimitsInput.AggregateLimitOfLiability']");
+	private static By optiononecheckbx=By.xpath("(//input[@fieldref='OptionInput.Select'])[1]");
+	private static By aggregatelimitofliabilitydropdown=By.xpath("//input[@fieldref='OptionInput.AggregateLimitOfLiability']");
 	private static By selecteddeductibletxtbx=By.xpath("//input[@fieldref='CovTechInput.SelectedDeductible']");
-	private static By ransomwaresublimitofliabilitytxtbx=By.xpath("//input[@fieldref='CyberLimitsInput.RansomwareSublimitOfLiability']");
-	private static By ransomwarecoinsurancetxtbx=By.xpath("//input[@fieldref='CyberLimitsInput.RansomwareCoinsurance']");
+	private static By ransomwaresublimitofliabilitytxtbx=By.xpath("//input[@fieldref='OptionInput.RansomwareSublimitOfLiability']");
+	private static By ransomwarecoinsurancetxtbx=By.xpath("//input[@fieldref='OptionInput.RansomwareCoinsurance']");
 	private static By standardpremiumtxtbx=By.xpath("//input[@fieldref='CyberLimitsOutput.StandardPremium']");
 	
 	//Advanced Risk Control
@@ -70,8 +69,9 @@ public class CoveragePricingPage extends BasePage {
 	private static String advancedriskcontrolremovestring="(//span[@class='g-btn-text'][contains(.,'X')])['%s']";
 	private static By advancedriskcontrolcommenttxtarea=By.xpath("//textarea[@fieldref='AdvancedRiskControlInput.AdditionalComments']");
 
-	//
+	//Optional Coverage tax/surcharge
 	private static By managedservicedrpdwn=By.xpath("//input[@fieldref='LineInput.ManagedServiceSelection']");
+	private static By njpligalabel=By.xpath("//label[contains(.,'NJ PLIGA')]");
 	private static By nextbtn=By.xpath("//span[@class='g-btn-text'][contains(.,'Next')]");
 
 
@@ -133,32 +133,33 @@ public class CoveragePricingPage extends BasePage {
 	//Method to enter all values in Schedule Rating fields
 	public CoveragePricingPage enterScheduleandRatingValues(String financialconditionValue,String financialconditionComment,
 			String maturityofbusinessValue,String maturityofbusinessComment,
-			String qualityofmanagmentValue,String qualityofmanagmentComment,String scheduleratingfactor) {
+			String qualityofmanagmentValue,String qualityofmanagmentComment) {
 		sendKeys(financialconditiontxtbx, financialconditionValue, WaitStrategy.PRESENCE, "Financial Condition text box");
 		sendKeys(financialconditioncommenttxtarea, financialconditionComment, WaitStrategy.PRESENCE, "Financial Condition Comment box");
 		sendKeys(maturityofbusinesstxtbx, maturityofbusinessValue, WaitStrategy.PRESENCE, "Maturity of business text box");
 		sendKeys(maturityofbusinesscommenttxtarea, maturityofbusinessComment, WaitStrategy.PRESENCE, "Maturity of business Comment box");
 		sendKeys(qualityofmanagmenttxtbx, qualityofmanagmentValue, WaitStrategy.PRESENCE, "Quality of managment text box");
 		sendKeys(qualityofmanagmenttxtarea, qualityofmanagmentComment, WaitStrategy.PRESENCE, "Quality of managment Comment box");
-		sendKeys(scheduleratingfactortxtbx, scheduleratingfactor, WaitStrategy.PRESENCE, "Schedule Rating Factor text box");
+		//sendKeys(scheduleratingfactortxtbx, scheduleratingfactor, WaitStrategy.PRESENCE, "Schedule Rating Factor text box");
 		return this;
 
 	}
 
 	//Method to enter all value in Limit/deductible screen
 	public CoveragePricingPage limitanddeductible(String option,String aggregatelimitofliability,String ransomwaresublimit,
-			String ransomwarecoinsurance,String standardpremium) throws InterruptedException {
-		JavaScriptHelper.scrollDownByPixel(200);
+			String ransomwarecoinsurance) throws InterruptedException {
+		scrollIntoView(optiononecheckbx);
 		Thread.sleep(2000);
 		if(option.equalsIgnoreCase("one")) {
 			clickUsingJS(optiononecheckbx);
-			Thread.sleep(4000);
 			JavaScriptHelper.scrollDownByPixel(200);
+			Thread.sleep(4000);
+			
 		}
 		sendKeysWithEnter(aggregatelimitofliabilitydropdown, aggregatelimitofliability, WaitStrategy.PRESENCE, "Aggregate Limit Liability drop down");
 		sendKeys(ransomwaresublimitofliabilitytxtbx, ransomwaresublimit, WaitStrategy.PRESENCE, "Ransomware Sublimit text box");
 		sendKeys(ransomwarecoinsurancetxtbx, ransomwarecoinsurance, WaitStrategy.PRESENCE, "Ransomware coinsurance text box");
-		sendKeys(standardpremiumtxtbx, standardpremium, WaitStrategy.PRESENCE, "Standard Premium text box");
+		//sendKeys(standardpremiumtxtbx, standardpremium, WaitStrategy.PRESENCE, "Standard Premium text box");
 		return this;
 
 	}
@@ -178,6 +179,16 @@ public class CoveragePricingPage extends BasePage {
 	}
 
 	//Method for Optional Coverage, Tax and Surcharge
+	
+	public boolean verifyNJPLIGALabel() {
+		if(isElemnetPresent(njpligalabel, WaitStrategy.PRESENCE, "NJ PLIGA label")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	
 	public PolicyFormPage optionalcoverageTaxAndSurchage() throws InterruptedException {
 		Thread.sleep(2000);
 		JavaScriptHelper.scrollDownVertically();

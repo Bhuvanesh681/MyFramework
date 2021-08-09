@@ -10,9 +10,11 @@
 	</listeners>
 	<test thread-count="2" name="Test" parallel="classes">
 		<classes>
-			<class name="com.common.qa.testcases.DCTQuickQuoteTest" />
 			<class name="com.common.qa.testcases.DCTQuickQuoteTest1" />
-
+			<class name="com.common.qa.testcases.DCTQuickQuoteTest2" />
+				<class name="com.common.qa.testcases.DCTQuickQuoteTest3" />
+					<class name="com.common.qa.testcases.DCTQuickQuoteTest4" />
+<class name="com.common.qa.testcases.DCTQuickQuoteTest5" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

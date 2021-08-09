@@ -11,6 +11,7 @@ import org.testng.ITestResult;
 import com.framework.annotations.FrameworkAnnotation;
 import com.framework.reports.ExtentLogger;
 import com.framework.reports.ExtentReport;
+import com.framework.utils.EmailUtils;
 
 
 public class ListenerClass implements ITestListener,ISuiteListener{
@@ -25,6 +26,8 @@ public class ListenerClass implements ITestListener,ISuiteListener{
 	public void onFinish(ISuite suite) {
 		
 			ExtentReport.flushReports();
+			
+			EmailUtils.sendEmailReportWithAttachment("Bhuvanesh.Sikarwar@cfins.com", "July@181", "abhishek.banerjee@cfins.com");
 		
 	}
 

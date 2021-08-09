@@ -26,6 +26,10 @@ public class BasePage {
 		JavaScriptHelper.buttonClickUsingJS(DriverManager.getDriver().findElement(ele));
 	}
 	
+	protected void scrollIntoView(By  ele) {
+		JavaScriptHelper.scrollIntoView(DriverManager.getDriver().findElement(ele));
+	}
+	
 	
 	protected void sendKeys(By by, String value, WaitStrategy waitstrategy,String elementname) {
 		ExplicitWaitFactory.performExplicitWait(waitstrategy, by).sendKeys(value);
@@ -120,6 +124,19 @@ protected void sendKeysWithEnterUsingKeyboard(By by, String value, WaitStrategy 
 		return DriverManager.getDriver().getTitle();
 	}
 	
+	protected boolean isElemnetPresent(By by, WaitStrategy waitstrategy,String elementname) {
+		boolean isElementPresent=false;
+		try {
+			if(ExplicitWaitFactory.performExplicitWait(waitstrategy, by).isDisplayed()) {
+			ExtentLogger.pass(elementname+" is present as expected ",true);
+			isElementPresent=true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return isElementPresent;
+	}
 
 
 }
