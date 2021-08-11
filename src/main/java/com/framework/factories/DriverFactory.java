@@ -3,6 +3,7 @@ package com.framework.factories;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -27,9 +28,9 @@ public final class DriverFactory {
 			if(runmode.equalsIgnoreCase("remote") ) {
 				DesiredCapabilities cap=new DesiredCapabilities();
 				cap.setBrowserName(BrowserType.CHROME);
-
+				cap.setPlatform(Platform.LINUX);
 				
-				driver =new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.SELENIUMGRIDURL)), cap);
+				driver =new RemoteWebDriver(new URL("http://54.174.86.201:4444/wd/hub"), cap);
 			
 
 			}else {
@@ -42,9 +43,9 @@ public final class DriverFactory {
 			if(runmode.equalsIgnoreCase("remote")) {
 				DesiredCapabilities cap=new DesiredCapabilities();
 				cap.setBrowserName(BrowserType.FIREFOX);
-
+				cap.setPlatform(Platform.LINUX);
 				
-					driver=new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.SELENIUMGRIDURL)), cap);
+					driver=new RemoteWebDriver(new URL("http://54.174.86.201:4444/wd/hub"), cap);
 				
 
 			}else {

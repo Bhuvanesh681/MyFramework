@@ -12,9 +12,12 @@
 		<classes>
 			<class name="com.common.qa.testcases.DCTQuickQuoteTest1" />
 			<class name="com.common.qa.testcases.DCTQuickQuoteTest2" />
-				<class name="com.common.qa.testcases.DCTQuickQuoteTest3" />
-					<class name="com.common.qa.testcases.DCTQuickQuoteTest4" />
-<class name="com.common.qa.testcases.DCTQuickQuoteTest5" />
+			<class name="com.common.qa.testcases.DCTQuickQuoteTest3" />
+			<class name="com.common.qa.testcases.DCTQuickQuoteTest4" />
+			<class name="com.common.qa.testcases.DCTQuickQuoteTest5" />
+				<class name="com.common.qa.testcases.DCTQuickQuoteTest6" />
+			
+			
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

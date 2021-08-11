@@ -27,21 +27,22 @@ public class CoveragePricingPage extends BasePage {
 	private static By waitingperoid_8=By.xpath("(//input[@fieldref='CovWaitingPeriodInput.WaitingPeriodSelection'])[1]");
 	private static By waitingperoid_10=By.xpath("(//input[@fieldref='CovWaitingPeriodInput.WaitingPeriodSelection'])[2]");
 
-	private static By endorsandextracoveragecommenttxtarea=By.xpath("//textarea[@fieldref='LineInput.EndorsementComments']");
+	private static By endorsandextracoveragecommenttxtarea=By.xpath("//textarea[@fieldref='OptionsInput.EndorsementComments']");
 	private static By additionalcoveragedescrtxtbx=By.xpath("//input[@fieldref='CovAdditionalCoverageInput.Description']");
 	private static By coverageoptionpremiumtxtbx=By.xpath("//input[@fieldref='CovAdditionalCoverageInput.CoveragePremium']");
 
 	//Schedule Rating fields
 	private static By financialconditiontxtbx=By.xpath("//input[@fieldref='Mods.FinancialCondition']");
-	private static By financialconditioncommenttxtarea=By.xpath("//textarea[@fieldref='Mods.FinancialConditionComment']");
+	private static By financialconditioncommenttxtarea=By.xpath("//input[@fieldref='Mods.FinancialConditionComment']");
+	
 	private static By maturityofbusinesstxtbx=By.xpath("//input[@fieldref='Mods.MaturityOfBusiness']");
-	private static By maturityofbusinesscommenttxtarea=By.xpath("//textarea[@fieldref='Mods.MaturityOfBusinessComment']");
+	private static By maturityofbusinesscommenttxtarea=By.xpath("//input[@fieldref='Mods.MaturityOfBusinessComment']");
 	private static By qualityofmanagmenttxtbx=By.xpath("//input[@fieldref='Mods.QualityOfManagement']");
-	private static By qualityofmanagmenttxtarea=By.xpath("//textarea[@fieldref='Mods.QualityOfManagementComment']");
+	private static By qualityofmanagmenttxtarea=By.xpath("//input[@fieldref='Mods.QualityOfManagementComment']");
 	private static By volumofinformationtxtbx=By.xpath("//input[@fieldref='Mods.VolumeOfInformation']");
-	private static By volumofinformationtxtarea=By.xpath("//textarea[@fieldref='Mods.VolumeOfInformationComment']");
+	private static By volumofinformationtxtarea=By.xpath("//input[@fieldref='Mods.VolumeOfInformationComment']");
 	private static By territoryofoperationtxtbx=By.xpath("//input[@fieldref='Mods.TerritoryOfOperations']");
-	private static By territoryofoperationtxtarea=By.xpath("//textarea[@fieldref='Mods.TerritoryOfOperationsComment']");
+	private static By territoryofoperationtxtarea=By.xpath("//input[@fieldref='Mods.TerritoryOfOperationsComment']");
 	private static By natureofcontenttxtbx=By.xpath("//input[@fieldref='Mods.NatureOfContent']");
 	private static By natureofcontenttxtarea=By.xpath("//textarea[@fieldref='Mods.NatureOfContentComment']");
 	private static By natureofreputationaltxtbx=By.xpath("//input[@fieldref='Mods.NatureOfReputational']");
@@ -141,6 +142,8 @@ public class CoveragePricingPage extends BasePage {
 		sendKeys(qualityofmanagmenttxtbx, qualityofmanagmentValue, WaitStrategy.PRESENCE, "Quality of managment text box");
 		sendKeys(qualityofmanagmenttxtarea, qualityofmanagmentComment, WaitStrategy.PRESENCE, "Quality of managment Comment box");
 		//sendKeys(scheduleratingfactortxtbx, scheduleratingfactor, WaitStrategy.PRESENCE, "Schedule Rating Factor text box");
+		JavaScriptHelper.scrollDownByPixel(200);
+		
 		return this;
 
 	}
@@ -148,14 +151,17 @@ public class CoveragePricingPage extends BasePage {
 	//Method to enter all value in Limit/deductible screen
 	public CoveragePricingPage limitanddeductible(String option,String aggregatelimitofliability,String ransomwaresublimit,
 			String ransomwarecoinsurance) throws InterruptedException {
-		scrollIntoView(optiononecheckbx);
 		Thread.sleep(2000);
-		if(option.equalsIgnoreCase("one")) {
-			clickUsingJS(optiononecheckbx);
-			JavaScriptHelper.scrollDownByPixel(200);
-			Thread.sleep(4000);
-			
-		}
+		scrollIntoView(optiononecheckbx);
+		//Thread.sleep(2000);
+		//JavaScriptHelper.scrollUpByPixel(100);
+		Thread.sleep(5000);
+		/*
+		 * if(option.equalsIgnoreCase("one")) { clickUsingJS(optiononecheckbx);
+		 * JavaScriptHelper.scrollDownByPixel(200); Thread.sleep(4000);
+		 * 
+		 * }
+		 */
 		sendKeysWithEnter(aggregatelimitofliabilitydropdown, aggregatelimitofliability, WaitStrategy.PRESENCE, "Aggregate Limit Liability drop down");
 		sendKeys(ransomwaresublimitofliabilitytxtbx, ransomwaresublimit, WaitStrategy.PRESENCE, "Ransomware Sublimit text box");
 		sendKeys(ransomwarecoinsurancetxtbx, ransomwarecoinsurance, WaitStrategy.PRESENCE, "Ransomware coinsurance text box");
@@ -194,7 +200,7 @@ public class CoveragePricingPage extends BasePage {
 		JavaScriptHelper.scrollDownVertically();
 		Thread.sleep(2000);
 		click(nextbtn, WaitStrategy.CLIKABLE, "Next Button");
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		return new PolicyFormPage();
 	}
 }

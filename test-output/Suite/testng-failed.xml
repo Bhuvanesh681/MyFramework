@@ -8,41 +8,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)" parallel="classes">
     <classes>
-      <class name="com.common.qa.testcases.DCTQuickQuoteTest5">
+      <class name="com.common.qa.testcases.DCTQuickQuoteTest6">
         <methods>
           <include name="setUp"/>
           <include name="tearDown"/>
-          <include name="QuickQuoteFlowTest5" invocation-numbers="0"/>
+          <include name="QuickQuoteFlowTest6" invocation-numbers="0"/>
         </methods>
-      </class> <!-- com.common.qa.testcases.DCTQuickQuoteTest5 -->
-      <class name="com.common.qa.testcases.DCTQuickQuoteTest4">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="QuickQuoteFlowTest4" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- com.common.qa.testcases.DCTQuickQuoteTest4 -->
-      <class name="com.common.qa.testcases.DCTQuickQuoteTest2">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="QuickQuoteFlowTest2" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- com.common.qa.testcases.DCTQuickQuoteTest2 -->
-      <class name="com.common.qa.testcases.DCTQuickQuoteTest3">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="QuickQuoteFlowTest3" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- com.common.qa.testcases.DCTQuickQuoteTest3 -->
-      <class name="com.common.qa.testcases.DCTQuickQuoteTest1">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="QuickQuoteFlowTest1" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- com.common.qa.testcases.DCTQuickQuoteTest1 -->
+      </class> <!-- com.common.qa.testcases.DCTQuickQuoteTest6 -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

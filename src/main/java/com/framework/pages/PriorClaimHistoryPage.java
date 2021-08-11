@@ -13,9 +13,12 @@ public class PriorClaimHistoryPage extends BasePage {
 
 	//Prior Claim History fields
 
-	private static By priorclaimlossdatecal=By.xpath("//input[@fieldref='LossInput.DateOfLoss']");
-	private static By totalincurredtxt=By.xpath("//input[@fieldref='LossInput.AmountPaid']");
-	private static By priorclaimhistorystatusselect=By.xpath("//input[@fieldref='LossInput.Status']");
+	private static By priorclaimlossdatecal_1=By.xpath("(//input[@fieldref='LossInput.DateOfLoss'])[1]");
+	private static By priorclaimlossdatecal_2=By.xpath("(//input[@fieldref='LossInput.DateOfLoss'])[2]");
+	private static By totalincurredtxt_1=By.xpath("(//input[contains(@fieldref,'LossInput.AmountPaid')])[1]");
+	private static By totalincurredtxt_2=By.xpath("(//input[contains(@fieldref,'LossInput.AmountPaid')])[2]");
+	private static By priorclaimhistorystatusselect_1=By.xpath("(//input[contains(@fieldref,'LossInput.Status')])[1]");
+	private static By priorclaimhistorystatusselect_2=By.xpath("(//input[contains(@fieldref,'LossInput.Status')])[2]");
 	private static By yearsofpriorcoveragetxtbx=By.xpath("//input[@fieldref='LineInput.YearsOfPriorCoverage']");
 	private static By noofclaimstxtbx=By.xpath("//input[@fieldref='LineInput.NumberOfClaims']");
 	private static By totallossincurredtxtbx=By.xpath("//input[@fieldref='LineInput.TotalLoss']");
@@ -31,9 +34,9 @@ public class PriorClaimHistoryPage extends BasePage {
 	JavaScriptHelper.scrollUpVertically();
 		if(numberofclaims.equalsIgnoreCase("1")) {
 		//	click(priorclainaddbtn, WaitStrategy.CLIKABLE, "Prior Claim Add Button");
-			sendKeys(priorclaimlossdatecal, priorclaimlossdate, WaitStrategy.PRESENCE, "Prior Claim Loss date calender");
-			sendKeysWithoutClick(totalincurredtxt, priorclaimamotpaid, WaitStrategy.PRESENCE, "Prior Claim amount paid field");
-			clearandsendKeys(priorclaimhistorystatusselect, priorclaimhistorystatus, WaitStrategy.PRESENCE, "priorclaimhistorystatusselect");
+			sendKeys(priorclaimlossdatecal_1, priorclaimlossdate, WaitStrategy.PRESENCE, "Prior Claim Loss date calender");
+			sendKeysWithoutClick(totalincurredtxt_1, priorclaimamotpaid, WaitStrategy.PRESENCE, "Prior Claim amount paid field");
+			clearandsendKeys(priorclaimhistorystatusselect_1, priorclaimhistorystatus, WaitStrategy.PRESENCE, "priorclaimhistorystatusselect");
 		}else {
 			addmultiplePriorClaims(numberofclaims,priorclaimlossdate,priorclaimamotpaid,priorclaimhistorystatus);
 		}
@@ -64,22 +67,27 @@ public class PriorClaimHistoryPage extends BasePage {
 			click(priorclainaddbtn, WaitStrategy.CLIKABLE, "Prior Claim Add Button");
 			noofclaim--;
 		}
-		List<WebElement> list1 = DriverManager.getDriver().findElements(priorclaimlossdatecal);
-		for(WebElement i:list1) {
-		sendKeyswithWebElement(i, priorclaimlossdate, WaitStrategy.NONE, "Prior Claim Loss date calender");
-		Thread.sleep(1000);
-		}
-		
-		List<WebElement> list2 = DriverManager.getDriver().findElements(totalincurredtxt);
-		for(WebElement j:list2) {
-			sendKeyswithWebElement(j, priorclaimamotpaid, WaitStrategy.NONE, "Prior Claim amount paid field");
-			Thread.sleep(1000);
-		}
-		List<WebElement> list3 = DriverManager.getDriver().findElements(priorclaimhistorystatusselect);
-		for(WebElement k:list3) {
-			sendKeyswithWebElement(k, priorclaimhistorystatus, WaitStrategy.NONE, "priorclaimhistorystatusselect");
-			Thread.sleep(1000);
-		}
+		sendKeys(priorclaimlossdatecal_1, priorclaimlossdate, WaitStrategy.PRESENCE, "Prior Claim Loss date calender");
+		sendKeysWithoutClick(totalincurredtxt_1, priorclaimamotpaid, WaitStrategy.PRESENCE, "Prior Claim amount paid field");
+		clearandsendKeys(priorclaimhistorystatusselect_1, priorclaimhistorystatus, WaitStrategy.PRESENCE, "priorclaimhistorystatusselect");
+		sendKeys(priorclaimlossdatecal_2, priorclaimlossdate, WaitStrategy.PRESENCE, "Prior Claim Loss date calender");
+		sendKeysWithoutClick(totalincurredtxt_2, priorclaimamotpaid, WaitStrategy.PRESENCE, "Prior Claim amount paid field");
+		clearandsendKeys(priorclaimhistorystatusselect_2, priorclaimhistorystatus, WaitStrategy.PRESENCE, "priorclaimhistorystatusselect");
+		/*
+		 * List<WebElement> list1 =
+		 * DriverManager.getDriver().findElements(priorclaimlossdatecal); for(WebElement
+		 * i:list1) { sendKeyswithWebElement(i, priorclaimlossdate, WaitStrategy.NONE,
+		 * "Prior Claim Loss date calender"); Thread.sleep(3000); }
+		 * 
+		 * List<WebElement> list2 =
+		 * DriverManager.getDriver().findElements(totalincurredtxt); for(WebElement
+		 * j:list2) { sendKeyswithWebElement(j, priorclaimamotpaid, WaitStrategy.NONE,
+		 * "Prior Claim amount paid field"); Thread.sleep(3000); } List<WebElement>
+		 * list3 =
+		 * DriverManager.getDriver().findElements(priorclaimhistorystatusselect);
+		 * for(WebElement k:list3) { sendKeyswithWebElement(k, priorclaimhistorystatus,
+		 * WaitStrategy.NONE, "priorclaimhistorystatusselect"); Thread.sleep(3000); }
+		 */
 		
 		
 	}
